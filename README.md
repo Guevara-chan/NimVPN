@@ -18,4 +18,4 @@ nim src\release.nims
 ```
 
 It's Nim. What do you expect?  
-___NimVPN__ uses external [winregistry](https://github.com/miere43/nim-registry) package by miere43.
+___NimVPN__ uses external [winregistry](https://github.com/miere43/nim-registry) package by miere43._
