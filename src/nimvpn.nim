@@ -38,5 +38,5 @@ proc main(country: string): string =
 #.}
 
 # -Main code-
-stdout.styledWrite fgRed, styleBright, main(if paramCount() > 1: paramStr(1) else: "RU")
+stdout.styledWrite fgRed, styleBright, main(if paramCount() > 1: paramStr(1) else: "US")
 3000.sleep()
