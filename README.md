@@ -5,7 +5,7 @@ _100% inspired by POSIX-based [autovpn](https://github.com/adtac/autovpn) and 20
 ❗ _Needs elevated UAC ('Run as Administator' works fine) to work properly._ ❗
 
 # •Featuræ•
-* No config required, works with auxiliary server list.
+* No config required, fully based on remote server list.
 * No installation required, running single executable with openvpn present in system is enough.
 
 # •Reassembling•
