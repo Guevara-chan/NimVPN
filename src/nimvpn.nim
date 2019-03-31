@@ -1,4 +1,4 @@
-import os, ospaths, osproc, streams, times, httpclient, strformat, strutils, base64, terminal, winregistry
+import os, ospaths, osproc, streams, httpclient, strformat, strutils, base64, terminal, winregistry
 let header = """  # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
                   # NimVPN private network autosetup v0.1 #
                   # Developed in 2019 by Victoria Guevara #
