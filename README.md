@@ -6,7 +6,7 @@ _100% inspired by POSIX-based [autovpn](https://github.com/adtac/autovpn) and 20
 
 # •Featuræ•
 * No data feed required, fully based on trusted remote server list.
-* No installation required, running single executable with openvpn present in system is enough.
+* No installation required, running single executable with OpenVPN present in system is enough.
 
 # •Reassembling•
 First clone the repo and `cd` into the directory:
