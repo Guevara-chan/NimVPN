@@ -17,4 +17,5 @@ Then run this to generate the executable:
 nim src\release.nims
 ```
 
-It's Nim. What do you expect?
+It's Nim. What do you expect?  
+___NimVPN__ uses external [winregistry](https://github.com/miere43/nim-registry) package by miere43.
