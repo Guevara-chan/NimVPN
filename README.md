@@ -6,7 +6,7 @@ _100% inspired by POSIX-based [autovpn](https://github.com/adtac/autovpn) and 20
 
 # •Featuræ•
 * No data feeds required, fully based on trusted remote server list.
-* No config required except providing desirable VPN country as cmdline arg (US by defalut).
+* No config required except providing desirable VPN country as cmdline arg (_US_ by defalut).
 * No installation required, running single executable with OpenVPN present in system is enough.
 
 # •Reassembling•
