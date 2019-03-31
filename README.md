@@ -5,7 +5,7 @@ _100% inspired by POSIX-based [autovpn](https://github.com/adtac/autovpn) and 20
 ❗ _Needs elevated UAC ('Run as Administator' works fine) to work properly._ ❗
 
 # •Featuræ•
-* No installation, placing executable and auxiliary libs to some writeable dir is enough.
+* No installation, running single executable with openvpn present in system is enough.
 
 # •Reassembling•
 First clone the repo and `cd` into the directory:
