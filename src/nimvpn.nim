@@ -35,8 +35,9 @@ proc main(country: string): string =
             if stdin.readLine.toLowerAscii[0] == 'n': break
             openvpn.terminate()
         except: return "[nimvpn] FAULT:: unable to start OpenVPN !"
+        fgGreen.styledEcho styleBright, "[nimvpn] end of list reached !"
 #.}
 
 # -Main code-
-stdout.styledWrite fgRed, styleBright, main(if paramCount() > 1: paramStr(1) else: "US")
+stdout.styledWrite fgRed, styleBright, main(if paramCount() > 1: paramStr(1) else: "RU")
 3000.sleep()
