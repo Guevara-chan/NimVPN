@@ -4,6 +4,9 @@ It uses [openvpn](https://github.com/OpenVPN/openvpn) to connect you to a server
 _100% inspired by POSIX-based [autovpn](https://github.com/adtac/autovpn) and 200% ported to Windows and [Nim](http://nim-lang.org) by [d38k8](https://github.com/d38k8)'s request._  
 ❗ _Needs elevated UAC ('Run as Administator' works fine) to work properly._ ❗
 
+# •Featuræ•
+* No installation, placing executable and auxiliary libs to some writeable dir is enough.
+
 # •Reassembling•
 First clone the repo and `cd` into the directory:
 
