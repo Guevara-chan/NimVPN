@@ -14,13 +14,13 @@ First clone the repo and `cd` into the directory:
 
 ```
 git clone https://github.com/adtac/autovpn
-cd autovpn
+cd autovpn\src
 ```
 
 Then run this to generate the executable:
 
 ```
-nim src\release.nims
+nim release.nims
 ```
 
 It's Nim. What do you expect?  
