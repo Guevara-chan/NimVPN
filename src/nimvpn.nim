@@ -13,8 +13,10 @@ proc main(country: string): string =
     if exe == "": return "[nimvpn] FAULT:: unable to locate OpenVPN ! "
     let command = fmt"{exe} --connect-retry-max 2 --connect-timeout 10 --config {config}"
     # Parsing server list.
+    let url = "http://www.vpngate.net/api/iphone/"
     fgYellow.styledEcho styleBright, "[nimvpn] getting server list..."
-    let list = newHttpClient().getContent("http://www.vpngate.net/api/iphone/").splitLines[2..^3]
+    let list = try: newHttpClient().getContent(url).splitLines[2..^3] except: @[]
+    if list.len == 0: return fmt"[nimvpn] FAULT:: unable to load {url} !"
     fgMagenta.styledEcho styleBright, fmt"[nimvpn] looking for VPNs from {country}:"
     # Main parsing loop.
     for idx, entry in list:
