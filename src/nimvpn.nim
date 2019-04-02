@@ -10,7 +10,7 @@ proc main(country: string): string =
     fgGreen.styledEcho styleBright, header.replace("  ", "")
     # Parsing OpenVPN location.
     let exe     = try: "HKEY_LOCAL_MACHINE\\SOFTWARE\\OpenVPN".open(samRead).readString("exe_path") except: ""
-    if exe == "": return "[nimvpn] FAULT:: unable to locate OpenVPN ! "
+    if exe == "": return "[nimvpn] FAULT:: unable to locate OpenVPN !"
     let config  = getTempDir().joinPath "vpnconfig.tmp"
     let command = fmt"{exe} --connect-retry-max 2 --connect-timeout 10 --config {config}"
     # Parsing server list.
@@ -41,5 +41,6 @@ proc main(country: string): string =
 #.}
 
 # -Main code-
-stdout.styledWrite fgRed, styleBright, main(if paramCount() >= 1: paramStr(1) else: "US")
+let report = main(if paramCount() > 1: paramStr(1) else: "US")
+if report != "": stdout.styledWrite fgRed, styleBright, report
 3000.sleep()
