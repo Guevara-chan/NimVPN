@@ -4,13 +4,14 @@ let header = """  # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
                   # Developed in 2019 by Victoria Guevara #
                   # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
              """
+
 #.{ [Procs]
 proc main(country: string): string =
     fgGreen.styledEcho styleBright, header.replace("  ", "")
     # Parsing OpenVPN location.
-    let config  = getTempDir().joinPath "vpnconfig.tmp"
     let exe     = try: "HKEY_LOCAL_MACHINE\\SOFTWARE\\OpenVPN".open(samRead).readString("exe_path") except: ""
     if exe == "": return "[nimvpn] FAULT:: unable to locate OpenVPN ! "
+    let config  = getTempDir().joinPath "vpnconfig.tmp"
     let command = fmt"{exe} --connect-retry-max 2 --connect-timeout 10 --config {config}"
     # Parsing server list.
     let url = "http://www.vpngate.net/api/iphone/"
@@ -40,5 +41,5 @@ proc main(country: string): string =
 #.}
 
 # -Main code-
-stdout.styledWrite fgRed, styleBright, main(if paramCount() > 1: paramStr(1) else: "US")
+stdout.styledWrite fgRed, styleBright, main(if paramCount() >= 1: paramStr(1) else: "US")
 3000.sleep()
