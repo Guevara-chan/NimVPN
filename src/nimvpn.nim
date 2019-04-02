@@ -35,7 +35,7 @@ proc main(country: string): string =
                 stdout.write output
                 if output.find("Initialization Sequence Completed") > -1: break
             stdout.styledWrite fgCyan,"[nimvpn] try another VPN ? (y/n) "
-            if stdin.readLine.toLowerAscii[0] == 'n': return ""
+            if getch() in ['n', 'N']: "n".styledEcho; return "[nimvpn] Terminated by user request." else: "y".styledEcho
         except: return "[nimvpn] FAULT:: unable to start OpenVPN !"
     fgWhite.styledEcho styleBright, "[nimvpn] === end of list reached ==="
 #.}
