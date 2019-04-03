@@ -27,15 +27,18 @@ proc main(country: string): string =
         config.writeFile chunks[14].decode()
         fgCyan.styledEcho styleBright, fmt"[nimvpn] running OpenVPN for {chunks[1]} [{idx}/{list.len}]"
         try:
-            let openvpn = command.startCmd
+            let openvpn = command.startProcess(options={poEvalCommand})
             defer: openvpn.terminate()
-            while openvpn.running:
+            while openvpn.running: # Piping openVPN output to stdout.
                 500.sleep()
                 let output = openvpn.outputStream.readAll()
                 stdout.write output
                 if output.find("Initialization Sequence Completed") > -1: break
             stdout.styledWrite fgCyan,"[nimvpn] try another VPN ? (y/n) "
-            if getch() in ['n', 'N']: "n".styledEcho; return "[nimvpn] Terminated by user request." else: "y".styledEcho
+            while true: # y/n input.
+                let inchar = try: getch().toLowerAscii except: ' '
+                if inchar in ['y', 'n']: styledEcho $inchar
+                if inchar == 'n': return "[nimvpn] Terminated by user request." elif inchar == 'y': break
         except: return "[nimvpn] FAULT:: unable to start OpenVPN !"
     fgWhite.styledEcho styleBright, "[nimvpn] === end of list reached ==="
 #.}
