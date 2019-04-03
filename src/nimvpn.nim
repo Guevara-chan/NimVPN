@@ -35,10 +35,10 @@ proc main(country: string): string =
                 stdout.write output
                 if output.find("Initialization Sequence Completed") > -1: break
             stdout.styledWrite fgCyan,"[nimvpn] try another VPN ? (y/n) "
-            while true: # y/n input.
+            while true: # Auxiliary y/n input.
                 let inchar = try: getch().toLowerAscii except: ' '
-                if inchar in ['y', 'n']: styledEcho $inchar
-                if inchar == 'n': return "[nimvpn] Terminated by user request." elif inchar == 'y': break
+                if inchar in ['y', 'n']: styledEcho $inchar else: continue
+                if inchar == 'n': return "[nimvpn] Terminated by user request." else: break
         except: return "[nimvpn] FAULT:: unable to start OpenVPN !"
     fgWhite.styledEcho styleBright, "[nimvpn] === end of list reached ==="
 #.}
