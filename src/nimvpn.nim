@@ -30,13 +30,11 @@ proc main(country: string): string =
             let openvpn = command.startProcess(options={poEvalCommand})
             defer: openvpn.terminate()
             while openvpn.running: # Piping openVPN output to stdout.
-                500.sleep()
-                let output = openvpn.outputStream.readAll()
+                let output = (500.sleep(); openvpn.outputStream.readAll())
                 stdout.write output
                 if output.find("Initialization Sequence Completed") > -1: break
             stdout.styledWrite fgCyan,"[nimvpn] try another VPN ? (y/n) "
-            while true: # Auxiliary y/n input.
-                let inchar = try: getch().toLowerAscii except: ' '
+            while (let inchar = try: getch().toLowerAscii except: ' '; true): # Auxiliary (y/n) input.                
                 if inchar in ['y', 'n']: styledEcho $inchar else: continue
                 if inchar == 'n': return "[nimvpn] Terminated by user request." else: break
         except: return "[nimvpn] FAULT:: unable to start OpenVPN !"
