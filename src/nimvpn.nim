@@ -3,7 +3,7 @@ const header = """# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
                   # NimVPN private network autosetup v0.1 #
                   # Developed in 2019 by Victoria Guevara #
                   # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
-"""
+                """
 
 #.{ [Procs]
 proc main(country: string): string =
