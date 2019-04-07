@@ -3,11 +3,11 @@ const header = """# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
                   # NimVPN private network autosetup v0.1 #
                   # Developed in 2019 by Victoria Guevara #
                   # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
-                """
+                """.replace("  ", "")
 
 #.{ [Procs]
 proc main(country: string): string =
-    fgGreen.styledEcho styleBright, header.replace("  ", "")
+    fgGreen.styledEcho styleBright, header
     # Parsing OpenVPN location.
     let exe     = try: "HKEY_LOCAL_MACHINE\\SOFTWARE\\OpenVPN".open(samRead).readString("exe_path") except: ""
     if exe == "": return "[nimvpn] FAULT:: unable to locate OpenVPN !"
