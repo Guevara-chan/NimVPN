@@ -25,3 +25,6 @@ nim release.nims
 
 It's Nim. What do you expect?  
 ___NimVPN__ uses external [winregistry](https://github.com/miere43/nim-registry) package by miere43._
+
+# •Brief sample of private netowrking•
+![image](https://user-images.githubusercontent.com/8768470/55900440-e16ebe80-5bcf-11e9-9231-ad34bb77e6b2.png)
