@@ -1,4 +1,4 @@
-import os, ospaths, osproc, streams, httpclient, strformat, strutils, base64, terminal, winregistry
+import os, ospaths, osproc, streams, httpclient, strformat, strutils, base64, terminal, winregistry, sequtils
 const header = """# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
                   # NimVPN private network autosetup v0.1 #
                   # Developed in 2019 by Victoria Guevara #
@@ -20,12 +20,11 @@ proc main(country: string): string =
     if list.len == 0: return fmt"[nimvpn] FAULT:: unable to load {url} !"
     fgMagenta.styledEcho styleBright, fmt"[nimvpn] looking for VPNs from {country}:"
     # Main parsing loop.
-    for idx, entry in list:
-        let chunks = entry.split ','
-        if chunks.len != 15: fgRed.styledEcho(fmt"[nimvpn] invalid entry encountered."); continue
-        if country != chunks[6]: continue
-        config.writeFile chunks[14].decode()
-        fgCyan.styledEcho styleBright, fmt"[nimvpn] running OpenVPN for {chunks[1]} [{idx}/{list.len}]"
+    for idx, entry in list.mapIt(seq[string], it.split ","):
+        if entry.len != 15: fgRed.styledEcho(fmt"[nimvpn] invalid entry encountered."); continue
+        if country != entry[6]: continue
+        config.writeFile entry[14].decode()
+        fgCyan.styledEcho styleBright, fmt"[nimvpn] running OpenVPN for {entry[1]} [{idx}/{list.len}]"
         try:
             let openvpn = command.startProcess(options={poEvalCommand})
             defer: openvpn.terminate()
