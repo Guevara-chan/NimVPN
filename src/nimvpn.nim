@@ -4,6 +4,7 @@ const header = """# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
                   # Developed in 2019 by Victoria Guevara #
                   # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- #
                 """.replace("  ", "")
+when sizeof(int) == 8: {.link: "res\\vpn64.res".}
 
 #.{ [Procs]
 proc main(country: string): string =
@@ -16,11 +17,11 @@ proc main(country: string): string =
     # Parsing server list.
     let url = "http://www.vpngate.net/api/iphone/"
     fgYellow.styledEcho styleBright, "[nimvpn] getting server list..."
-    let list = try: newHttpClient().getContent(url).splitLines[2..^3] except: @[]
+    let list = try: newHttpClient().getContent(url).splitLines[2..^3].mapIt(it.split(",").seq[:string]) except: @[]
     if list.len == 0: return fmt"[nimvpn] FAULT:: unable to load {url} !"
     fgMagenta.styledEcho styleBright, fmt"[nimvpn] looking for VPNs from {country}:"
     # Main parsing loop.
-    for idx, entry in list.mapIt(it.split(",").seq[:string]):
+    for idx, entry in list:
         if entry.len != 15: fgRed.styledEcho(fmt"[nimvpn] invalid entry encountered."); continue
         if country != entry[6]: continue
         config.writeFile entry[14].decode()
