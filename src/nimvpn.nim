@@ -20,7 +20,7 @@ proc main(country: string): string =
     if list.len == 0: return fmt"[nimvpn] FAULT:: unable to load {url} !"
     fgMagenta.styledEcho styleBright, fmt"[nimvpn] looking for VPNs from {country}:"
     # Main parsing loop.
-    for idx, entry in list.mapIt(seq[string], it.split ","):
+    for idx, entry in list.mapIt(it.split(",").seq[:string]):
         if entry.len != 15: fgRed.styledEcho(fmt"[nimvpn] invalid entry encountered."); continue
         if country != entry[6]: continue
         config.writeFile entry[14].decode()
