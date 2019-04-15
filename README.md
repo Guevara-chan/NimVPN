@@ -14,8 +14,8 @@ _100% inspired by POSIX-based [autovpn](https://github.com/adtac/autovpn) and 20
 First clone the repo and `cd` into the directory:
 
 ```
-git clone https://github.com/adtac/autovpn
-cd autovpn\src
+git clone https://github.com/Guevara-chan/NimVPN
+cd nimvpn\src
 ```
 
 Then run this to generate the executable:
