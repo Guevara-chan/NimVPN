@@ -28,4 +28,4 @@ It's Nim. What do you expect?
 ___NimVPN__ uses external [winregistry](https://github.com/miere43/nim-registry) package by miere43._
 
 # •Brief sample of private networking•
-![image](https://user-images.githubusercontent.com/8768470/56149265-d2638400-5fb4-11e9-9768-e182ac87cd0d.png)
+![image](https://user-images.githubusercontent.com/8768470/56150498-b9a89d80-5fb7-11e9-8b59-cca037cccbd3.png)
