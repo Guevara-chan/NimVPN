@@ -42,6 +42,6 @@ proc main(country: string): string =
 #.}
 
 # -Main code-
-let report = main(if paramCount() > 1: paramStr(1) else: "US")
+let report = main(if paramCount() > 0: paramStr(1) else: "US")
 if report != "": stdout.styledWrite fgRed, styleBright, report
 3000.sleep()
